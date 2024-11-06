@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\singlePagecontroller;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use App\Models\Category;
+use App\Http\Controllers\ViewsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +38,5 @@ Route::get('/super-admin-dashboard',function(){
 })->middleware(['auth','verified','super-admin'])->name('super.admin.dashboard');
 
 Route::get('/super-admin-single-page',[singlePagecontroller::class,'singlePage'])->middleware('auth','verified','super-admin');
+
+Route::get('/view',[ViewsController::class,'viewPage']);
