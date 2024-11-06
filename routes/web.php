@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\singlePagecontroller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,3 +33,5 @@ Route::get('/admin-dashboard',function(){
 Route::get('/super-admin-dashboard',function(){
     return view('super-admin-dashboard');
 })->middleware(['auth','verified','super-admin'])->name('super.admin.dashboard');
+
+Route::get('/super-admin-single-page',[singlePagecontroller::class,'singlePage'])->middleware('auth','verified','super-admin');
